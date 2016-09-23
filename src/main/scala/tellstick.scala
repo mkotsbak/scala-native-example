@@ -1,17 +1,9 @@
-import TelldusCoreFull.TDDeviceEvent
+import TelldusCore.TDDeviceEvent
 
 import scalanative.native._
 import stdio._
 import string._
 import FunctionPtr._
-
-@link("telldus-core")
-@extern object TelldusCore {
-  def tdInit(): Unit = extern
-  def tdTurnOn(deviceId: Int): Int = extern
-  def tdTurnOff(deviceId: Int): Int = extern
-  def tdClose(): Unit = extern
-}
 
 @extern object Unistd {
   def usleep(usecs: Long): Int = extern
@@ -34,7 +26,7 @@ object TellstickTest {
     //
      //val cb: TDDeviceEvent = callback
     //
-    TelldusCoreFull.tdRegisterDeviceEvent( (deviceId: CInt, method: CInt, data: CString, callbackId: CInt, context: Ptr[_]) => {
+    TelldusCore.tdRegisterDeviceEvent( (deviceId: CInt, method: CInt, data: CString, callbackId: CInt, context: Ptr[_]) => {
       fprintf(stdout, c"DeviceId: %i, method: %i, data: %s\n", deviceId, method, data)
       fflush(stdout)
       stdlib.malloc(1)
