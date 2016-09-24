@@ -15,9 +15,8 @@ object Thread {
 
 object TellstickTest {
 
-  def callback(deviceId: CInt, method: CInt, data: CString, callbackId: CInt, context: Ptr[_]) = {
-    //fprintf(stdout, c"DeviceId: %i, method: %i, data: %s", deviceId, method, data)
-    stdlib.malloc(1)
+  def callback(deviceId: CInt, method: CInt, data: CString, callbackId: CInt, context: Ptr[_]): Unit = {
+    fprintf(stdout, c"DeviceId: %i, method: %i, data: %s", deviceId, method, data)
   }
 
   def main(args: Array[String]): Unit = {
@@ -29,8 +28,9 @@ object TellstickTest {
     TelldusCore.tdRegisterDeviceEvent( (deviceId: CInt, method: CInt, data: CString, callbackId: CInt, context: Ptr[_]) => {
       fprintf(stdout, c"DeviceId: %i, method: %i, data: %s\n", deviceId, method, data)
       fflush(stdout)
-      stdlib.malloc(1)
-    }, stdlib.malloc(1))
+    }: Unit, stdlib.malloc(1))
+
+    //TelldusCore.tdRegisterDeviceEvent(callback _, stdlib.malloc(1))
 
     TelldusCore.tdTurnOn(1)
     Thread.sleep(2000)
