@@ -1,6 +1,6 @@
 ## Overview
 
-This project is an example of how you can use the [Telldus core](https://github.com/mkotsbak/scala-native-telldus-core) facade with [Scala Native]
+This project is an example of how you can use the [Telldus core facade](https://github.com/mkotsbak/scala-native-telldus-core)  with [Scala Native]
 
 #### Installation and running
 
