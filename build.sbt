@@ -7,4 +7,4 @@ nativeClangOptions := Seq(
   "-g"
 )
 
-libraryDependencies += "default" %% "scala-native-telldus-core" % "0.1-SNAPSHOT"
+libraryDependencies += "default" %% "telldus-core_sn" % "0.1-SNAPSHOT"
