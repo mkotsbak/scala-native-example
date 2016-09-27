@@ -1,10 +1,28 @@
-enablePlugins(ScalaNativePlugin)
+import sbtcrossproject.{CrossType, JVM, Native}
 
-scalaVersion := "2.11.8"
+enablePlugins(CrossProjectPlugin)
 
-nativeClangOptions := Seq(
-  "-O2",
-  "-g"
+val scalaV = "2.11.8"
+
+lazy val cross = crossProject.platform(JVM).platform(Native).crossType(CrossType.Full).in(file("."))
+
+lazy val projectNative = cross.projects(Native).settings(
+  //name := projectName + "_sn",
+  scalaVersion := scalaV,
+  //organization := "default"
+  nativeClangOptions := Seq(
+    "-O2",
+    "-g"
+  ),
+  libraryDependencies += "default" %% "telldus-core_sn" % "0.1-SNAPSHOT"
+).enablePlugins(ScalaNativePlugin)
+
+lazy val projectJvm = cross.projects(JVM).settings(
+  //name := projectName,
+  scalaVersion := scalaV,
+  libraryDependencies += "default" %% "telldus-core" % "0.1-SNAPSHOT"
+  //organization := "default",
 )
 
-libraryDependencies += "default" %% "telldus-core_sn" % "0.1-SNAPSHOT"
+//lazy val projectJs = project.projects(JS)
+

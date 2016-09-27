@@ -13,7 +13,7 @@ object Thread {
   def sleep(millis: Long) = Unistd.usleep(millis * 1000)
 }
 
-object TellstickTest {
+object TellstickApp {
 
   def callback(deviceId: CInt, method: CInt, data: CString, callbackId: CInt, context: Ptr[_]): Unit = {
     fprintf(stdout, c"DeviceId: %i, method: %i, data: %s", deviceId, method, data)
@@ -21,7 +21,7 @@ object TellstickTest {
 
   def main(args: Array[String]): Unit = {
     fprintf(stdout, c"Hi!")
-    TelldusCore.tdInit()
+    //TelldusCore.tdInit()
     //
      //val cb: TDDeviceEvent = callback
     //
@@ -32,14 +32,6 @@ object TellstickTest {
 
     //TelldusCore.tdRegisterDeviceEvent(callback _, stdlib.malloc(1))
 
-    TelldusCore.tdTurnOn(1)
-    Thread.sleep(2000)
-    TelldusCore.tdTurnOff(1)
-
-    Thread.sleep(5000)
-
-    getchar()
-    getchar()
-    TelldusCore.tdClose()
+    TellstickTest.testTellstick()
   }
 }
