@@ -4,6 +4,9 @@ This project is an example of how you can use the [Telldus core facade](https://
 
 ### Installation and running
 
+* Until merged/published, you need to clone https://github.com/gurinderu/sbt-cross-project and do "sbt publishLocal" first
+* Until merged/published, you need to clone https://github.com/mkotsbak/scala-native-telldus-core/tree/crossProjectWithSJS branch and do "sbt publishLocal" first
+
 ## JVM version
 
 * Run with "sbt jvm/run"
