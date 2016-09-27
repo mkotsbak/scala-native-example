@@ -1,5 +1,6 @@
 
 object TellstickTest {
+  def sleep(millis: Long) = Sleep.sleep(millis)
 
   def testTellstick() {
     println("Hi")
@@ -17,10 +18,10 @@ object TellstickTest {
     //TelldusCore.tdRegisterDeviceEvent(callback _, stdlib.malloc(1))
 
     TelldusCore.tdTurnOn(1)
-    Thread.sleep(2000)
+    sleep(2000)
     TelldusCore.tdTurnOff(1)
 
-    Thread.sleep(5000)
+    sleep(5000)
 
     TelldusCore.tdClose()
   }

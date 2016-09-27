@@ -9,7 +9,7 @@ import FunctionPtr._
   def usleep(usecs: Long): Int = extern
 }
 
-object Thread {
+object Sleep {
   def sleep(millis: Long) = Unistd.usleep(millis * 1000)
 }
 
@@ -20,7 +20,6 @@ object TellstickApp {
   }
 
   def main(args: Array[String]): Unit = {
-    fprintf(stdout, c"Hi!")
     //TelldusCore.tdInit()
     //
      //val cb: TDDeviceEvent = callback
